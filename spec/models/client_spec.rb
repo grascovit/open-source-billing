@@ -1,16 +1,24 @@
 require 'rails_helper'
+require 'pry'
 
 describe Client do
   let(:client) do
     FactoryGirl.create(:client)
   end
 
+  before(:each) do
+    Thread.current[:current_user] = FactoryGirl.create(:user)
+  end
+
+  it { should have_many(:estimates) }
   it { should have_many(:invoices) }
   it { should have_many(:payments) }
-  it { should have_many(:client_contacts) }
+  it { should have_many(:client_contacts).dependent(:destroy) }
+  it { should have_many(:projects) }
   it { should accept_nested_attributes_for(:client_contacts) }
-  #it { should belong_to(:company) }
+  it { should belong_to(:currency) }
   it { should have_many(:company_entities) }
+  it { should have_many(:expenses) }
 
   it "should have many company_entities" do
     t = Client.reflect_on_association(:client_contacts)
@@ -31,12 +39,12 @@ describe Client do
   end
 
   it '#purchase_options' do
-    expect(client.purchase_options).to eq({ ip: '10.28.80.144', billing_address: { name: 'Arif Khan', address1: '2nd Street', city: 'Lahore', state: 'Punjab', country: 'Pakistan', zip: '54000' } })
+    expect(client.purchase_options).to eq({ ip: OSB::Util.local_ip, billing_address: { name: 'Arif Khan', address1: '2nd Street', city: 'Lahore', state: 'Punjab', country: 'Pakistan', zip: '54000' } })
   end
 
 
   it '#get_credit_card' do
-    expect(client.get_credit_card()).to eq(type: 'visa' , first_name: 'Arif', last_name: 'Khan',  number: '4650161406428289', month: '8',  year: '2015',  verification_value: '123')
+    expect(client.get_credit_card({})).to be_a_kind_of(ActiveMerchant::Billing::CreditCard)
   end
 
   it '#archive_multiple' do
@@ -56,7 +64,7 @@ describe Client do
   end
 
   it '#filter' do
-    expect(Client.filter('Missing "params"')).to eq('Exception in RSpec')
+    expect(Client.filter(status: 'archived')).to eq([])
   end
 
   it '#credit_payments' do
@@ -64,18 +72,18 @@ describe Client do
   end
 
   it '#client_credit' do
-    expect(client.client_credit).to eq('Returned instance object BigDecimal')
+    expect(client.client_credit).to be_kind_of(BigDecimal)
   end
 
   it '#add_available_credit' do
-    expect(client.add_available_credit('Missing "available_credit"', 'Missing "company_id"')).to eq('Returned instance object Payment id: nil, invoice_id: nil, payment_amount: #<BigDecimal:34e0068,"0.0",9(9)>, payment_type: "credit", payment_method: nil, payment_date: "2014-12-02", notes: nil, send_payment_notification: nil, paid_full: nil, archive_number: nil, archived_at: nil, deleted_at: nil, created_at: nil, updated_at: nil, credit_applied: nil, client_id: nil, company_id')
+    expect(client.add_available_credit('Missing "available_credit"', 'Missing "company_id"')).to be_kind_of(Payment)
   end
 
   it '#update_available_credit' do
-    expect(client.update_available_credit('Missing "available_credit"')).to eq('Exception in RSpec')
+    expect{client.update_available_credit('Missing "available_credit"')}.to raise_error(NoMethodError)
   end
 
   it '#get_clients' do
-    expect(Client.get_clients('Missing "params"')).to eq('Exception in RSpec')
+    expect{Client.get_clients({})}.to raise_error(NoMethodError)
   end
 end

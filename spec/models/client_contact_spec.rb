@@ -5,6 +5,8 @@ describe ClientContact do
     FactoryGirl.create(:client)
   end
 
+  it { should belong_to :client }
+
   let(:client_contact) do
     client.client_contacts.create(:client_contact)
   end

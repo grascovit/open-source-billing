@@ -21,6 +21,12 @@ describe User do
 
   describe User do
     it { should have_and_belong_to_many(:accounts) }
+
+    it { should have_one :staff }
+
+    it { should have_many(:logs).dependent(:destroy) }
+
+    it { should validate_uniqueness_of :email }
   end
 
   it 'should recognise when an user has no account' do

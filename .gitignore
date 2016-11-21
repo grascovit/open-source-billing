@@ -40,3 +40,6 @@ Gemfile.lock
 
 /config/config.yml
 node_modules/*
+
+# Coverage reports
+/coverage/

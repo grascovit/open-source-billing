@@ -120,6 +120,7 @@ GEM
     devise-encryptable (0.2.0)
       devise (>= 2.1.0)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
     doorkeeper (1.4.2)
@@ -314,6 +315,11 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    simplecov (0.12.0)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slim (3.0.7)
       temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
@@ -432,6 +438,7 @@ DEPENDENCIES
   sass-rails (= 5.0.4)
   shoulda (~> 3.5.0)
   shoulda-matchers (= 2.8.0)
+  simplecov
   slim (= 3.0.7)
   slim-rails (= 3.1.0)
   sprockets (~> 2.12.3)
@@ -449,4 +456,4 @@ RUBY VERSION
    ruby 2.0.0p451
 
 BUNDLED WITH
-   1.12.5
+   1.13.6

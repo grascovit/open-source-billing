@@ -73,6 +73,7 @@ group :test do
   gem 'shoulda-matchers', '2.8.0'
   gem 'shoulda', '~> 3.5.0'
   gem 'rspec-its', '1.2.0'
+  gem 'simplecov'
 end
 
 gem 'money', '~>  6.5.0'

@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.0.0-p247
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - mysql -e 'create database osb_test;'
+test:
+  adapter: mysql2
+  database: osb_test
+  username: root
+  encoding: utf8
+cache: bundler

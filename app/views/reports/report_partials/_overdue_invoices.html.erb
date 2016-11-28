@@ -3,7 +3,7 @@
 
     <div class="report_content_header">
       <div class="report_content_heading">
-        <h1><%= t('views.reports.overdue_invoices') %></h1>
+        <h1><%= t('views.reports.overdue_invoices.name') %></h1>
       </div>
 
       <div class="content_header_data">
@@ -13,7 +13,7 @@
               <!--<li class="header_name "><%= @report.client_name %></li>-->
               <li class="header_duration"><%= @report.period %></li>
               <li class="header_description">
-                <%= t('views.reports.invoice_detail_dtl') %>
+                <%= t('views.reports.overdue_invoices.details') %>
               </li>
             </ul>
           </div>
@@ -52,7 +52,7 @@
                   <td class="align_left" data-sort_val="<%= invoice.client.organization_name %>"><%= invoice.client.organization_name %></td>
                   <td class="align_center" data-sort_val="<%= invoice.invoice_date %>" ><%= invoice.invoice_date %></td>
                   <td class="align_center" data-sort_val="<%= invoice.due_date %>" ><%= invoice.due_date %></td>
-                  <td class="align_center <%= invoice.status %>" title="<%= invoice.tooltip %>" data-sort_val="<%= invoice.status %>" ><%= invoice.status %></td>
+                  <td class="align_center <%= invoice.status %>" title="<%= invoice.tooltip %>" data-sort_val="<%= invoice.status %>" ><%= t("views.invoices.#{invoice.status}") %></td>
                   <td class="align_right" data-sort_val="<%= invoice.invoice_total %>" ><%= number_to_currency(invoice.invoice_total, unit: invoice.currency.present? ? invoice.currency.unit : "$") %></td>
                 </tr>
             <% end %>

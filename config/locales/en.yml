@@ -223,6 +223,8 @@ en:
       apply_payment_detail: "Select one or more Invoices from the list below to apply payment."
       selected_amount_detail: "You haven't selected any invoice. Please select one or more invoices and try again."
       enter_payment: "Enter payment"
+      sent_to: "sent to"
+      received_from: "received from"
 
     invoices:
       invoice: "Invoices"
@@ -269,6 +271,20 @@ en:
       no_invoice_msg: "You haven't created any invoice yet. Please click on New Invoice button to create new invoice."
       no_archived_msg: "You haven't any archived invoice."
       no_deleted_msg: "You haven't any deleted invoice."
+      sent: "Sent"
+      paid: "Paid"
+      draft: "Draft"
+      disputed: "Disputed"
+      viewed: "Viewed"
+      draft_partial: "Draft partial"
+      partial: "Partial"
+      draft_dtl: 'Invoice created, but you have not notified your client.'
+      sent_dtl: 'Invoice created and sent to your client.'
+      viewed_dtl: 'Client has clicked the invoice URL in the email and viewed the invoice in browser.'
+      paid_dtl: 'Client has made full payment against the invoice.'
+      partial_dtl: 'Client has made partial payment against the invoice.'
+      draft_partial_dtl: 'Payment received against the draft invoice.'
+      disputed_dtl: 'Client has disputed this invoice.'
       recurring:
         recurring_profile: "Recurring Profile"
         start_date: "Start date"
@@ -468,6 +484,8 @@ en:
       net_total: "Net Total"
       period_ending: "Period Ending"
       date_range: "Date Range"
+      overdue_invoices:
+        period: "Data da fatura entre %{entry_name} e %{}. Data de vencimento até %{today}"
 
     settings:
       settings: "Settings"

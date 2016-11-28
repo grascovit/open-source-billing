@@ -34,7 +34,11 @@ module Reporting
       HEADER_COLUMNS = ['Invoice No', 'Client', 'Invoice Date', 'Invoice Due Date', 'Status', 'Invoice Total']
 
       def period
-        "Invoice date between #{@report_criteria.from_date.strftime(get_date_format)} and #{@report_criteria.to_date.strftime(get_date_format)}. Due date before #{Date.today}"
+        I18n.t('views.reports.overdue_invoices.period',
+               start_date: @report_criteria.from_date.strftime(get_date_format),
+               end_date: @report_criteria.to_date.strftime(get_date_format),
+               today: Date.today
+        )
       end
 
       def get_report_data

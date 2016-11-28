@@ -69,15 +69,15 @@
                 </div>
             </li>
             <li class="dropdown">
-              <%= active_link_to "Estimates", estimates_path, :class => "dropdown-toggle disabled", "data-toggle" => "dropdown" %>
+              <%= active_link_to t("header.links.estimates.estimates"), estimates_path, :class => "dropdown-toggle disabled", "data-toggle" => "dropdown" %>
               <ul class="sub">
-                <li><%= active_link_to "Estimates", estimates_path %></li>
-                <li><%= active_link_to "New Estimate", new_estimate_path %></li>
+                <li><%= active_link_to t("header.links.estimates.estimates"), estimates_path %></li>
+                <li><%= active_link_to t("header.links.estimates.new"), new_estimate_path %></li>
               </ul>
               <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <ul>
-                  <li><%= active_link_to "Estimate Listing", estimates_path %></li>
-                  <li><%= active_link_to "New Estimate", new_estimate_path %></li>
+                  <li><%= active_link_to t("header.links.estimates.listing"), estimates_path %></li>
+                  <li><%= active_link_to t("header.links.estimates.new"), new_estimate_path %></li>
                 </ul>
               </div>
             </li>
